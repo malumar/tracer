@@ -9,9 +9,7 @@ func TestNewSimple(t *testing.T) {
 
 	var sb strings.Builder
 
-	tr := NewSimple(Debug|Trace, func(bytes []byte) {
-		sb.Write(bytes)
-	})
+	tr := NewWithoutOnCloser(Debug|Trace, &sb)
 
 	tr.Trace("Hello World")
 	tr.Info("Hello world")
